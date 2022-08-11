@@ -1,11 +1,28 @@
 {% stylesheet %}
-    .my_liquid{
-        color:"red"
-    }
+.my_liquid {
+    background-color: #47c1bf;
+    color: red;
+    text-align: center;
+    font-size: 16px;
+    padding: 20px;
+}
 {% endstylesheet %}
 
 
 <div class="my_liquid">
 
-Hello 2nd day in coding shopify!!!!!!!!
+Hello 2nd day in coding shopify!!!!!!!! <br>
+I will try to fix up all the things today!!
 </div>
+
+{% schema %}
+{
+    {
+        "type": "color",
+        "id": "text_color",
+        "label": "Color",
+        "default": "#000",
+       
+    },
+}
+{% endschema %}
