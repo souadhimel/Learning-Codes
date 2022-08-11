@@ -1,62 +1,12 @@
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
 {% stylesheet %}
-.my_liquid {
-    background-color: {{section.settings.bg_color}};
-    color: {{section.settings.color}};
-    text-align: center;
-    font-size: {{section.settings.font_size}}px;
-    padding: 20px;
-}
 {% endstylesheet %}
 
-
-{% if section.settings.show_announcement %}
-<div class="my_liquid">
-{{section.settings.a_text}}
-
-    </div>
-{% endif %}
-
-
-
-</div>
-
-{% schema %}
-{
-   "name": "Announce",
-  "settings": [
-  {
-    "type": "checkbox",
-    "id": "show_announcement",
-    "label": "Show announcement",
-    "default": true
-  },
-  {
-    "type": "text",
-    "id": "a_text",
-    "label": "heading",
-    "default": "pease enter a text",
-  
-  },
-  {
-    "type": "color",
-    "id": "color",
-    "label": "Color",
-    "default": "#000",
-  },
-  {
-    "type": "background color",
-    "id": "bg_color",
-    "label": "Background Color",
-    "default": "#000",
-  },
-  {
-    "type": "font size",
-    "id": "font_size",
-    "label": "Font Size",
-    "default": "16px",
-
-  }
-  ]
-   
-}
-{% endschema %}
+{% javascript %}
+{% endjavascript %}
