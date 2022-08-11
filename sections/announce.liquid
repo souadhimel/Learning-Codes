@@ -10,8 +10,23 @@
 
 
 <div class="my_liquid">
-
+{{section.settings.show_announcement}}
 Hello 2nd day in coding shopify!!!!!!!! <br>
 I will try to fix up all the things today!!
 </div>
 
+{% schema %}
+{
+   "name": "Announce",
+  "settings": [
+  {
+    "type": "checkbox",
+    "id": "show_announcement",
+    "label": "Show announcement",
+    "default": true
+  }
+  
+  ]
+   
+}
+{% endschema %}
