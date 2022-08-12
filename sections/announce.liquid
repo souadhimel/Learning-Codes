@@ -1,3 +1,4 @@
+
 <style>
   .my_liquid {
       background: {{section.settings.background}};
@@ -22,34 +23,48 @@
     <div><img src="{{section.settings.upload_image |img_url:'100x'}}" alt=""/></div>
     {% endif %}
   
-    
-  {% schema %}
+
+
+{% if section.settings.show_announcement %}
+<div class="my_liquid">
+{{section.settings.a_text}}
+
+    </div>
+{% endif %}
+
+
+{% schema %}
+{
+   "name": "Announce",
+  "settings": [
   {
-    "name":"Announcement Section",
-    "settings":[
-  {
-      "type": "checkbox",
-      "id": "show_announcement",
-      "label": "Show announcement",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "a_text",
-      "label": "Heading",
-      "default": "Please enter a text"
-    },
-      {
-    "type": "color",
-    "id": "text_color",
-    "label": "Text Color",
-    "default": "#000000"
+    "type": "checkbox",
+    "id": "show_announcement",
+    "label": "Show announcement",
+    "default": true
   },
-      {
-    "type": "color_background",
-    "id": "background",
-    "label": "Background",
-    "default": "linear-gradient(#ffffff, #000000)"
+     {
+    "type": "text",
+    "id": "a_text",
+    "label": "Heading",
+    "default": "please enter a text"
+  
+  },
+    {
+    "type": "color",
+    "id": "color",
+    "label": "Color",
+    "default": "#000"
+  },
+    {
+    "type": "range",
+    "id": "fs_size",
+    "label": "Font Size",
+    "unit": "px",
+    "min": 8,
+    "max": 30,
+    "step": 1,
+    "default": 8
   }
   ,
       
