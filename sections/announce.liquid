@@ -1,62 +1,118 @@
-{% stylesheet %}
-.my_liquid {
-    background-color: {{section.settings.bg_color}};
-    color: {{section.settings.color}};
-    text-align: center;
-    font-size: {{section.settings.font_size}}px;
-    padding: 20px;
-}
-{% endstylesheet %}
-
-
-{% if section.settings.show_announcement %}
-<div class="my_liquid">
-{{section.settings.a_text}}
-
-    </div>
-{% endif %}
-
-
-
-</div>
-
-{% schema %}
-{
-   "name": "Announce",
-  "settings": [
-  {
-    "type": "checkbox",
-    "id": "show_announcement",
-    "label": "Show announcement",
-    "default": true
-  },
-  {
-    "type": "text",
-    "id": "a_text",
-    "label": "heading",
-    "default": "pease enter a text",
+<style>
+  .my_liquid {
+      background: {{section.settings.background}};
+      color: {{section.settings.text_color}};
+      text-align: {{section.settings.text_alignment}};
+      font-size: {{section.settings.font_size}}px;
+      padding: {{section.settings.padding}}px;
+  } 
+  </style>
   
-  },
+  
+  {% if section.settings.show_announcement %}
+  <div class="my_liquid">
+  {{section.settings.a_text}}
+      </div>
+  {% endif %}
+  
+  
+  <div>{{section.settings.show_html}}</div>
+  
+  {% if section.settings.upload_image %}
+    <div><img src="{{section.settings.upload_image |img_url:'100x'}}" alt=""/></div>
+    {% endif %}
+  
+    
+  {% schema %}
   {
+    "name":"Announcement Section",
+    "settings":[
+  {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "a_text",
+      "label": "Heading",
+      "default": "Please enter a text"
+    },
+      {
     "type": "color",
-    "id": "color",
-    "label": "Color",
-    "default": "#000",
+    "id": "text_color",
+    "label": "Text Color",
+    "default": "#000000"
   },
-  {
-    "type": "background color",
-    "id": "bg_color",
-    "label": "Background Color",
-    "default": "#000",
-  },
-  {
-    "type": "font size",
-    "id": "font_size",
-    "label": "Font Size",
-    "default": "16px",
-
+      {
+    "type": "color_background",
+    "id": "background",
+    "label": "Background",
+    "default": "linear-gradient(#ffffff, #000000)"
   }
-  ]
-   
-}
-{% endschema %}
+  ,
+      
+        {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font Size",
+      "unit": "px",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 18
+    
+      },
+        {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "unit": "px",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "default": 10
+    
+      },
+      {
+    "type": "radio",
+    "id": "text_alignment",
+    "label": "Text alignment",
+    "options": [
+      {
+        "value": "left",
+        "label": "Left"
+      },
+      {
+        "value": "center",
+        "label": "Center"
+      },
+      {
+        "value": "right",
+        "label": "Right"
+      }
+    ],
+    "default": "center"
+  },
+      {
+    "type": "html",
+    "id": "show_html",
+    "label": "Write custom HTML code"
+  },
+      {
+    "type": "image_picker",
+    "id": "upload_image",
+    "label": "Upload an image",
+        "info":"Image size will be 100X100px"
+  }  
+    ]
+  }
+  
+    {% endschema %}
+  
+  
+  
+  
+  {% javascript %}
+  {% endjavascript %}
